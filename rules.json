@@ -18,5 +18,15 @@
 		"action": {
 			"type": "block"
 		}
+	},
+	{
+		"id": 3,
+		"priority": 2,
+		"condition": {
+			"urlFilter": "https://canine.tools/"
+		},
+		"action": {
+			"type": "allow"
+		}
 	}
 ]

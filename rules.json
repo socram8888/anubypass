@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"priority": 2,
+		"condition": {
+			"urlFilter": "/.within.website/x/cmd/anubis/"
+		},
+		"action": {
+			"type": "block"
+		}
+	},
+	{
+		"id": 2,
+		"priority": 2,
+		"condition": {
+			"urlFilter": "/.within.website/x/xess/"
+		},
+		"action": {
+			"type": "block"
+		}
+	}
+]

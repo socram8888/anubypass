@@ -1,0 +1,60 @@
+# Version: 2022.12.04.01
+
+# Force all text files to be LF
+* text=auto eol=lf
+
+# Project source files
+*.bat text eol=crlf
+*.c text diff=cpp
+*.conf text
+*.config text
+*.cmd text eol=crlf
+*.cnf text
+*.cs text diff=csharp
+*.csproj text diff=html
+*.css text
+*.cue text
+*.diff text
+*.h text diff=cpp
+*.html text
+*.ino text diff=cpp
+*.java text diff=java
+*.js text
+*.json text
+*.ld text
+*.md text
+*.properties text
+*.ps1 text
+*.py text diff=python
+*.scss text
+*.s text
+*.sql text
+*.sln text
+*.sh text eol=lf
+*.txt text
+*.xml text diff=html
+*.yml text
+.gitattributes text
+.gitignore text
+.htaccess text
+Dockerfile text
+
+# Images
+*.bmp binary
+*.jpg binary
+*.png binary
+*.svg text
+
+# Binaries
+*.act binary
+*.bin binary
+*.dat binary
+*.dll binary
+*.dylib binary
+*.elf binary
+*.exe binary
+*.img binary
+*.jnilib binary
+*.mcd binary
+*.o library
+*.so binary

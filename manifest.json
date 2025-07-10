@@ -1,0 +1,35 @@
+{
+	"manifest_version": 3,
+	"name": "Anubypass",
+	"version": "1.0",
+	"description": "Bypasses Anubis' JavaScript challenges by spoofing the browser's user agent.",
+	"icons": {
+		"16": "logo/thumb_16.png",
+		"128": "logo/thumb_128.png"
+	},
+	"permissions": [
+		"declarativeNetRequest",
+		"webRequest",
+		"scripting"
+	],
+	"host_permissions": [
+		"<all_urls>"
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"declarative_net_request" : {
+		"rule_resources" : [{
+			"id": "ruleset",
+			"enabled": true,
+			"path": "rules.json"
+		}]
+	},
+	"web_accessible_resources": [
+		{
+			"resources": ["logo/full.svg"],
+			"matches": ["<all_urls>"],
+			"use_dynamic_url": true
+		}
+	]
+}

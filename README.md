@@ -12,6 +12,10 @@ protection.
 It works by detecting when the browser is presented with a JavaScript challenge and switching the
 User Agent to a random one, which Anubis lets through unchecked.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/screenshot.png" height="400">
+</p>
+
 If you are a sysadmin and think that it's acceptable to make users wait while wasting precious
 system resources on a protection so trivial to bypass that it took me around 100 lines of code, you
 should consider switching to a crypto miner. At least you'd get some cash instead of a false sense

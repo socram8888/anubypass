@@ -2,6 +2,10 @@
 Anubypass
 =========
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/logo/full.svg" height="200">
+</p>
+
 A Chrome extension to bypass [Anubis](https://anubis.techaro.lol/)'s
 protection.
 

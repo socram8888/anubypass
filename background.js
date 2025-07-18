@@ -6,6 +6,10 @@ const KNOWN_HOST_RULE_OFFSET = 100;
 const KNOWN_HOSTS = [
 	// STARTS KNOWN HOSTS
 	'archives.lib.duke.edu',
+	'archlinux32.org',
+	'azurlane.koumakan.jp',
+	'bbs.archlinux32.org',
+	'bugs.archlinux32.org',
 	'bugs.scummvm.org',
 	'bugs.winehq.org',
 	'builder.sourceware.org',
@@ -69,6 +73,7 @@ const KNOWN_HOSTS = [
 	'wiki.scummvm.org',
 	'xeiaso.net',
 	// ENDS KNOWN HOSTS
+	'patchwork.kernel.org',
 ];
 
 // Hosts where enabling the protection would break the site

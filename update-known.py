@@ -46,12 +46,10 @@ hosts = sorted(minimal_hosts)
 with open('manifest.json', 'r+', newline='\n') as f:
 	manifest = json.load(f)
 
-	manifest_hosts = []
-	for host in hosts:
-		manifest_hosts.append(f'*://{host}/*')
-		manifest_hosts.append(f'*://*.{host}/*')
-	manifest['host_permissions'] = manifest_hosts
+	manifest['host_permissions'] = [f'*://*.{host}/*' for host in hosts]
 
 	f.seek(0)
 	f.truncate(0)
 	json.dump(manifest, f, indent='\t')
+	# Trailing NL
+	f.write('\n')

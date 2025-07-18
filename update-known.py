@@ -24,6 +24,7 @@ hosts = set(re.findall(r'https?://(?:www\.)?([a-z0-9\.]+)/', content, re.IGNOREC
 hosts = (hosts | EXTRA_HOSTS) - DISABLED_HOSTS
 
 # Sort by length, and perform filtering of subdomains if parent is already contained
+hosts = sorted(hosts, key=lambda x: len(x))
 minimal_hosts = []
 
 def is_already_covered(new_host):

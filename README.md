@@ -6,8 +6,8 @@ Anubypass
   <img src="https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/logo/full.svg" height="200">
 </p>
 
-A Chrome and Firefox extension to bypass [Anubis](https://anubis.techaro.lol/)'s
-protection.
+A Chrome and Firefox extension to bypass [Anubis](https://anubis.techaro.lol/)'
+protection, saving your time and battery!
 
 Anubis analyzes your browser's User Agent header. If you are on JavaScript-enabled browser,
 it forces you a challenge before letting you through. On the contrary, if you are not, it

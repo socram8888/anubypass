@@ -9,6 +9,7 @@ EXTRA_HOSTS = {
 	'dd-wrt.com',
 	'felsqualle.com',
 	'patchwork.kernel.org',
+	'techaro.lol',
 	'uvensys.de',
 }
 

@@ -40,6 +40,8 @@ for browser in ("firefox", "chrome"):
 				else:
 					# Chromium uses "service_worker"
 					del modified_manifest['background']['scripts']
+					# Delete Firefox's stupid key too
+					del modified_manifest['browser_specific_settings']
 
 				zipf.writestr('manifest.json', json.dumps(modified_manifest, indent='\t'))
 			else:

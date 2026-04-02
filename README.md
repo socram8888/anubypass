@@ -6,11 +6,16 @@ Anubypass
   <img src="https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/logo/full.svg" height="200">
 </p>
 
-A Chrome extension to bypass [Anubis](https://anubis.techaro.lol/)'s
+A Chrome and Firefox extension to bypass [Anubis](https://anubis.techaro.lol/)'s
 protection.
 
-It works by detecting when the browser is presented with a JavaScript challenge and switching the
-User Agent to a random one, which Anubis lets through unchecked.
+Anubis analyzes your browser's User Agent header. If you are on JavaScript-enabled browser,
+it forces you a challenge before letting you through. On the contrary, if you are not, it
+simply lets you walk through undisturbed.
+
+To exploit this behaviour, this extension uses [a list of known protected websites](hosts.json)
+for which, instead of sending your real browser User Agent that Anubis will know is JS-capable,
+it sends instead a unique randomized User Agent that changes every four hours.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/screenshot.png" height="400">

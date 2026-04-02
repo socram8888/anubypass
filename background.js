@@ -13,8 +13,6 @@ const ALL_RESOURCE_TYPES = [
 	'csp_report',
 	'media',
 	'websocket',
-	'webtransport',
-	'webbundle',
 	'other',
 ];
 
@@ -32,6 +30,8 @@ const SEC_CH_HEADERS = [
 	'Sec-CH-UA-Platform-Version',
 	'Sec-CH-UA-WoW64',
 ];
+
+const UPDATE_RULES_ALARM_NAME = 'update-rules-alarm';
 
 /**
  * Builds a randomized versioned string in the form <product>/<version>.
@@ -75,10 +75,30 @@ function buildFakeUA() {
 /**
  * Callback to setup the randomized User-Agent for the Anubis-protected hosts.
  */
-const setupRules = async () => {
-	// Remove currently set-up session rules, as they persist between extension reloads.
-	const oldRules = (await chrome.declarativeNetRequest.getSessionRules()).map(x => x.id);
-	console.log('Old rules:', oldRules);
+const updateRules = async () => {
+	console.debug('Now updating rules');
+
+	// Fetch the hosts list from the remote JSON file
+	let hostsList;
+	try {
+		const response = await fetch('https://raw.githubusercontent.com/socram8888/anubypass/refs/heads/master/hosts.json');
+		if (!response.ok) {
+			console.error('Failed to fetch hosts.json:', response.statusText);
+			return;
+		}
+		hostsList = await response.json();
+	} catch (error) {
+		console.error('Error fetching hosts.json:', error);
+		return;
+	}
+
+	// Sanity check
+	if (!Array.isArray(hostsList) || !hostsList.every(host => typeof host === 'string' && host.includes('.'))) {
+		console.error('Fetched hosts.json with an invalid format');
+		return;
+	}
+
+	console.debug('Fetched', hostsList.length, 'domains');
 
 	const requestHeaders = [
 		// Set User-Agent to a random one
@@ -97,6 +117,11 @@ const setupRules = async () => {
 		}),
 	];
 
+	// Remove currently set-up dynamic rules
+	const oldRules = (await chrome.declarativeNetRequest.getDynamicRules()).map(x => x.id);
+	console.debug('Old rules IDs:', oldRules);
+
+	// Create a single rule with all domains
 	const newRule = {
 		id: 1,
 		priority: 1,
@@ -105,24 +130,45 @@ const setupRules = async () => {
 			requestHeaders,
 		},
 		condition: {
-			/*
-			 * We need to specify, for some reason, all possible types. Else the rule will not
-			 * work, at least as of Chrome 138.
-			 */
 			resourceTypes: ALL_RESOURCE_TYPES,
-			/*
-			 * Note we do not perform any hostname filtering - this rule will only apply on hosts
-			 * that are listed in the manifest.json, so no need to add them here too.
-			 */
+			requestDomains: hostsList
 		}
 	};
+	console.debug('New rule:', newRule);
 
-	await chrome.declarativeNetRequest.updateSessionRules({
-		removeRuleIds: oldRules,
-		addRules: [newRule],
-	});
+	// Update dynamic rules (they persist between browser restarts)
+	try {
+		await chrome.declarativeNetRequest.updateDynamicRules({
+			removeRuleIds: oldRules,
+			addRules: [newRule],
+		});
+	} catch (e) {
+		console.error('Failed to update rules:', e);
+		return;
+	}
+
+	console.info('Updated rules successfully');
 };
 
-// Install extension installed/updated callback
-chrome.runtime.onStartup.addListener(setupRules);
-chrome.runtime.onInstalled.addListener(setupRules);
+// Update rules on alarm
+chrome.alarms.onAlarm.addListener(updateRules);
+
+/**
+ * Configures the update rules alarm, if not already configured.
+ */
+const setupAlarm = async () => {
+	const alarm = await chrome.alarms.get(UPDATE_RULES_ALARM_NAME);
+	if (!alarm) {
+		console.debug('Alarm was not set up - setting up updates');
+
+		// Fire initial rule fetch
+		await updateRules();
+
+		// Then schedule updates every 24 hours
+		await chrome.alarms.create(UPDATE_RULES_ALARM_NAME, { periodInMinutes: 24 * 60 });
+	}
+}
+
+// Setup alarm on install, update or start
+chrome.runtime.onStartup.addListener(setupAlarm);
+chrome.runtime.onInstalled.addListener(setupAlarm);

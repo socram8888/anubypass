@@ -164,8 +164,8 @@ const setupAlarm = async () => {
 		// Fire initial rule fetch
 		await updateRules();
 
-		// Then schedule updates every 24 hours
-		await chrome.alarms.create(UPDATE_RULES_ALARM_NAME, { periodInMinutes: 24 * 60 });
+		// Then schedule updates every 4 hours
+		await chrome.alarms.create(UPDATE_RULES_ALARM_NAME, { periodInMinutes: 4 * 60 });
 	}
 }
 

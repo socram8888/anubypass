@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import re
 import requests
@@ -42,14 +43,7 @@ for host in hosts:
 # Now sort alphabetically, just because they look nice
 hosts = sorted(minimal_hosts)
 
-# Inject in manifest.json
-with open('manifest.json', 'r+', newline='\n') as f:
-	manifest = json.load(f)
-
-	manifest['host_permissions'] = [f'*://*.{host}/*' for host in hosts]
-
-	f.seek(0)
-	f.truncate(0)
-	json.dump(manifest, f, indent='\t')
-	# Trailing NL
+# Write to hosts.json
+with open('hosts.json', 'w', newline='\n') as f:
+	json.dump(hosts, f, indent='\t')
 	f.write('\n')

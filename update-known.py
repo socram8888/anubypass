@@ -6,7 +6,10 @@ import json
 
 # Extra hosts that do not appear in the known instances list
 EXTRA_HOSTS = {
+	'dd-wrt.com',
+	'felsqualle.com',
 	'patchwork.kernel.org',
+	'uvensys.de',
 }
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in
@@ -19,7 +22,7 @@ DISABLED_HOSTS = {
 content = requests.get("https://raw.githubusercontent.com/TecharoHQ/anubis/refs/heads/main/docs/docs/user/known-instances.md").text
 
 # Find all matches and get unique hosts
-hosts = set(re.findall(r'https?://(?:www\.)?([a-z0-9\.]+)/', content, re.IGNORECASE))
+hosts = set(re.findall(r'https?://(?:www\.)?([a-z0-9\.-]+)', content, re.IGNORECASE))
 
 # Add extra and remove disabled
 hosts = (hosts | EXTRA_HOSTS) - DISABLED_HOSTS

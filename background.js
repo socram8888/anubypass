@@ -47,6 +47,9 @@ function buildVersionedName() {
 		str += LETTERS[(Math.random() * LETTERS.length) | 0];
 	}
 
+	// Remove "bot", just in case
+	str = str.replace(/(bo)t/gi, (_, start) => `${start}x`);
+
 	str += '/';
 	str += (Math.random() * 100) | 0;
 	if (Math.random() < 0.5) {

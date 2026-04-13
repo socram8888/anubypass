@@ -11,6 +11,7 @@ EXTRA_HOSTS = {
 	'patchwork.kernel.org',
 	'techaro.lol',
 	'uvensys.de',
+	'ffmpeg.org',
 }
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in

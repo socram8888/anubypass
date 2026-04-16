@@ -8,10 +8,11 @@ import json
 EXTRA_HOSTS = {
 	'dd-wrt.com',
 	'felsqualle.com',
+	'ffmpeg.org',
 	'patchwork.kernel.org',
+	'smartmontools.org',
 	'techaro.lol',
 	'uvensys.de',
-	'ffmpeg.org',
 }
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in

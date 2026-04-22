@@ -7,6 +7,8 @@ import json
 # Extra hosts that do not appear in the known instances list
 EXTRA_HOSTS = {
 	'dd-wrt.com',
+	'debian.net',
+	'debian.org',
 	'felsqualle.com',
 	'ffmpeg.org',
 	'patchwork.kernel.org',

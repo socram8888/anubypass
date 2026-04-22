@@ -19,9 +19,7 @@ EXTRA_HOSTS = {
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in
 # exchange lol)
-DISABLED_HOSTS = {
-	'canine.tools',
-}
+DISABLED_HOSTS = set()
 
 # Fetch known instances Markdown
 content = requests.get("https://raw.githubusercontent.com/TecharoHQ/anubis/refs/heads/main/docs/docs/user/known-instances.md").text
@@ -54,4 +52,18 @@ hosts = sorted(minimal_hosts)
 # Write to hosts.json
 with open('hosts.json', 'w', newline='\n') as f:
 	json.dump(hosts, f, indent='\t')
+	f.write('\n')
+
+# Merge new
+with open('hosts-v2.json', 'r') as f:
+	hostsfile = json.load(f)
+
+all_prev_hosts = set(hostsfile['random'])
+for x in hostsfile['snowflakes']:
+	all_prev_hosts |= set(x['hosts'])
+hostsfile['random'].extend([host for host in hosts if host not in all_prev_hosts])
+hostsfile['random'].sort()
+
+with open('hosts-v2.json', 'w', newline='\n') as f:
+	json.dump(hostsfile, f, indent='\t')
 	f.write('\n')

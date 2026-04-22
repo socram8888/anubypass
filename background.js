@@ -128,14 +128,14 @@ function buildUARule(id, hosts, ua) {
 }
 
 /**
- * Checks if a fetched host info file matches the expected format
- * @param hostInfo host info to validate
+ * Checks if a fetched hosts info file matches the expected format
+ * @param hostsInfo host info to validate
  * @returns true if valid
  */
-function validateHostInfoFile(hostInfo) {
+function validateHostsInfoFile(hostsInfo) {
 	const isHost = (host) => typeof host == 'string' && host.includes('.');
-	return
-		typeof(hostInfo) == 'object' &&
+	return (
+		typeof(hostsInfo) == 'object' &&
 		Array.isArray(hostsInfo.random) &&
 		hostsInfo.random.every(isHost) &&
 		Array.isArray(hostsInfo.snowflakes) &&
@@ -145,7 +145,8 @@ function validateHostInfoFile(hostInfo) {
 			snowflake.validUas.every(ua => typeof ua == 'string') &&
 			Array.isArray(snowflake.hosts) &&
 			snowflake.hosts.every(isHost)
-		);
+		)
+	);
 }
 
 /**
@@ -168,7 +169,7 @@ const updateRules = async () => {
 		return;
 	}
 
-	if (!validateHostInfoFile(hostsInfo)) {
+	if (!validateHostsInfoFile(hostsInfo)) {
 		console.error('Fetched hosts info file with an invalid format:', hostsInfo);
 		return;
 	}
@@ -180,16 +181,16 @@ const updateRules = async () => {
 	// Build generic, random UA rule
 	let ruleId = 1;
 	const newRules = [
-		buildUARule(ruleId++, hostsInfo.randomHosts, buildFakeUA()),
+		buildUARule(ruleId++, hostsInfo.random, buildFakeUA()),
 	]
 
 	// Build snowflake rules
-	for (const snowflake in hostsInfo.snowflakes) {
-		newRules.push(buildUARule(ruleId++, snowflake.hosts, randomChoice(snowflake.validUas)))
+	for (const snowflake of hostsInfo.snowflakes) {
+		newRules.push(buildUARule(ruleId++, snowflake.hosts, randomChoice(snowflake.validUas)));
 	}
 
 	// Log for debugging
-	console.debug('New rules:', newRule);
+	console.debug('New rules:', newRules);
 
 	// Update dynamic rules (they persist between browser restarts)
 	try {

@@ -14,6 +14,7 @@ EXTRA_HOSTS = {
 	'patchwork.kernel.org',
 	'smartmontools.org',
 	'techaro.lol',
+	'techinc.nl',
 	'uvensys.de',
 }
 

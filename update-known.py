@@ -9,6 +9,7 @@ EXTRA_HOSTS = {
 	'dd-wrt.com',
 	'debian.net',
 	'debian.org',
+	'fedoraproject.org',
 	'felsqualle.com',
 	'ffmpeg.org',
 	'patchwork.kernel.org',

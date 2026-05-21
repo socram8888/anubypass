@@ -6,6 +6,7 @@ import json
 
 # Extra hosts that do not appear in the known instances list
 EXTRA_HOSTS = {
+	'bootlin.com',
 	'dd-wrt.com',
 	'debian.net',
 	'debian.org',

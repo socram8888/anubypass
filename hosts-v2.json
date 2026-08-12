@@ -14,6 +14,7 @@
 		"code.hackerspace.pl",
 		"codeberg.org",
 		"dd-wrt.com",
+		"debian.net",
 		"debian.org",
 		"dev.haiku-os.org",
 		"dev.sanctum.geek.nz",
@@ -82,11 +83,16 @@
 	"snowflakes": [
 		{
 			"validUas": [
-				"Not-Googlebot",
-				"Not-Yandexbot"
+				"curl/8.19.0",
+				"curl/8.18.0",
+				"curl/8.17.0",
+				"curl/8.16.0",
+				"curl/8.15.0",
+				"curl/8.14.1",
+				"curl/8.14.0"
 			],
 			"hosts": [
-				"debian.net"
+				"alpinelinux.org"
 			]
 		}
 	]

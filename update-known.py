@@ -20,9 +20,6 @@ EXTRA_HOSTS = {
 	'techaro.lol',
 	'techinc.nl',
 	'uvensys.de',
-
-	# These actually run go-away
-	'alpinelinux.org',
 }
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in

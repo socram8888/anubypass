@@ -10,6 +10,7 @@ EXTRA_HOSTS = {
 	'dd-wrt.com',
 	'debian.net',
 	'debian.org',
+	'developer.valvesoftware.com',
 	'fedoraproject.org',
 	'felsqualle.com',
 	'ffmpeg.org',
@@ -19,6 +20,9 @@ EXTRA_HOSTS = {
 	'techaro.lol',
 	'techinc.nl',
 	'uvensys.de',
+
+	# These actually run go-away
+	'alpinelinux.org',
 }
 
 # Hosts that force always JS challenges regardless of UA (and get nuked from Google Search in

@@ -14,6 +14,7 @@ EXTRA_HOSTS = {
 	'fedoraproject.org',
 	'felsqualle.com',
 	'ffmpeg.org',
+	'metabrainz.org',
 	'osmocom.org',
 	'patchwork.kernel.org',
 	'smartmontools.org',

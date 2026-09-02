@@ -95,6 +95,14 @@
 			"hosts": [
 				"alpinelinux.org"
 			]
+		},
+		{
+			"validUas": [
+				"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/150.0.0.0 Safari/537.36"
+			],
+			"hosts": [
+				"ghisler.ch"
+			]
 		}
 	]
 }

@@ -18,6 +18,7 @@ EXTRA_HOSTS = {
 	'osmocom.org',
 	'patchwork.kernel.org',
 	'smartmontools.org',
+	'smutba.se',
 	'techaro.lol',
 	'techinc.nl',
 	'uvensys.de',

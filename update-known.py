@@ -19,6 +19,7 @@ EXTRA_HOSTS = {
 	'patchwork.kernel.org',
 	'smartmontools.org',
 	'smutba.se',
+	'sw2.zip',
 	'techaro.lol',
 	'techinc.nl',
 	'uvensys.de',

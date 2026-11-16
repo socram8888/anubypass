@@ -17,6 +17,7 @@ EXTRA_HOSTS = {
 	'metabrainz.org',
 	'osmocom.org',
 	'patchwork.kernel.org',
+	'ryujinx.app',
 	'smartmontools.org',
 	'smutba.se',
 	'sw2.zip',
